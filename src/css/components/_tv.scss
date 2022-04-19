@@ -1,0 +1,358 @@
+$min_width: 320px;
+$max_width: 1200px;
+$min_font: 10px;
+$max_font: 12px;
+
+// .quickview__btn {
+//   margin: auto 25%;
+//   @include fluid-type($min_width, $max_width, $min_font, $max_font);
+//   color: black;
+//   background-color: #eee;
+//   padding: 10px 35px;
+//   border-radius: 20px;
+//   font-weight: bold;
+//   display: block;
+// }
+
+.product-card-v2__name-link {
+  margin-top: 30px;
+}
+.option-selector-v2__color-name {
+  padding-top: 12px;
+}
+.product-card-v2__option-selector {
+  margin: 20px -24px 0;
+}
+
+.quickview__btn {
+  margin-top: 20.5%;
+  margin-left: 9.4%;
+  @include fluid-type($min_width, $max_width, $min_font, $max_font);
+  color: black;
+  background-color: #eee;
+  padding: 10px 35px;
+  @media screen and (max-width: 1024px) {
+    padding: 10px 15px;
+  }
+  @media screen and (max-width: 768px) {
+    margin-left: 10.6%;
+    padding: 10px 10px;
+  }
+  border-radius: 20px;
+  font-weight: bold;
+  display: inline;
+  position: absolute;
+  z-index: 999;
+}
+.quickview__btn:nth-child(11) {
+  display: block;
+}
+.quickview__btn:nth-child(15) {
+  display: block;
+}
+
+.quickview__btn:hover {
+  background-color: black;
+  color: #fff;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 9999; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 20px;
+  width: 75%;
+  @media screen and (max-width: 768px) {
+    width: 90%;
+  }
+  @media screen and (min-width: 1500px) {
+    width: 55%;
+  }
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    .image__container {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      top: 30px;
+      padding: 0px 10px 0px 0px;
+      .main__product__image {
+        img {
+          width: 100%;
+        }
+      }
+      .icons {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        padding-top: 45px;
+        @include fluid-type($min_width, $max_width, $min_font, $max_font);
+        text-align: center;
+        align-items: flex-end;
+        p {
+          font-weight: bold;
+        }
+        img {
+          max-width: 100%;
+          background-size: cover;
+          margin-bottom: 10px;
+        }
+      }
+      span {
+        position: absolute;
+        right: 0;
+        top: -40px;
+        img {
+          width:50%;
+        }
+      }
+    }
+    .product__info__content {
+      width: 50%;
+      padding: 0px 0px 0px 10px;
+      .promotion-card-v2__sub-headline-text {
+        padding-bottom: 5px;
+        font-weight: bold;
+        padding-right: 5px;
+      }
+      small {
+        @include fluid-type($min_width, $max_width, $min_font, $max_font);
+        color: #a1a1a1;
+      }
+      .dot-list {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-bottom: 10px;
+        @media screen and (max-width: 1024px) {
+          padding: 0px 0px;
+        }
+        li {
+          text-align: left;
+          position: relative;
+          margin-left: 10px;
+          line-height: 1.5;
+          font-weight: bold;
+
+          .icon {
+            width: 13px;
+            position: absolute;
+            left: -15px;
+            top: 5px;
+          }
+        }
+        .usp-text {
+          @include fluid-type($min_width, $max_width, $min_font, $max_font);
+          font-weight: 100;
+          line-height: 1.8;
+        }
+      }
+      .product-card-v2__price-full {
+        @include fluid-type($min_width, $max_width, $min_font, 25px);
+        padding: 15px 0px;
+        .prevPrice {
+          font-weight: 100;
+          sub {
+            vertical-align: baseline;
+          }
+        }
+        span {
+          font-size: 12px;
+          vertical-align: baseline;
+          color: #0381fe;
+        }
+        .product-card-v2__feature-text {
+          @include fluid-type($min_width, $max_width, $min_font, 20px);
+          padding: 5px 0px;
+          .product-card-v2__feature-cta {
+            color: black !important;
+            pointer-events: none !important;
+            font-weight: 100 !important;
+            text-decoration: none;
+          }
+        }
+      }
+
+      .size__container {
+        display: none;
+        .size__text {
+          display: flex;
+          justify-content: space-between;
+          @include fluid-type($min_width, $max_width, $min_font, 15px);
+          span {
+            a {
+              text-decoration: underline;
+              color: #0381fe;
+              font-weight: bold;
+              font-size: 12px;
+            }
+          }
+        }
+        .button__sizes {
+          @include fluid-type($min_width, $max_width, $min_font, $max_font);
+          display: flex;
+          flex-flow: wrap;
+          a {
+            padding: 15px 55px;
+            margin: 10px 10px 10px 0px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+          }
+          // a:hover {
+          //   cursor: pointer;
+          //   border: 1px solid #0381fe;
+          // }
+        }
+      }
+      .offer__container {
+        @include fluid-type($min_width, $max_width, $min_font, 20px);
+        .offer__blocks {
+          .descripton {
+            padding: 10px 10px;
+            background-color: #f5f7fe;
+            border-radius: 3px;
+            margin: 10px 0px;
+            font-weight: bold;
+            font-size: 14px;
+            p {
+              span {
+                font-size: 12px !important;
+                font-family: 'SamsungOne', arial !important;
+              }
+            }
+            h3 {
+              font-size: 12px;
+            }
+            p:nth-child(3) {
+              display: none;
+            }
+            p:nth-child(2) {
+              display: none;
+            }
+            img {
+              display: none;
+            }
+          }
+        }
+      }
+      .cta__container {
+        display: flex;
+        justify-content: center;
+        a {
+          border: none;
+          text-decoration: underline;
+        }
+        .add__to__basket {
+          a {
+            background-color: #0381fe !important;
+            text-decoration: none;
+            padding: 10px 4em;
+          }
+        }
+        .unavaliable {
+          margin-top: 20px;
+          border: 1px solid black;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+/* The Close Button */
+// .close {
+//   color: #aaa;
+//   float: right;
+//   font-size: 28px;
+//   font-weight: bold;
+// }
+
+.close::before {
+  display: block;
+  float: right;
+  margin: 3px;
+  width: 20px;
+  height: 20px;
+  background: url(https://www.samsung.com/etc.clientlibs/samsung/clientlibs/consumer/global/clientlib-common/resources/images/svg-layer-close.svg)
+    no-repeat 0 0;
+  background-size: 100% auto;
+  content: '';
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.reviews {
+  display: flex;
+  align-items: start;
+  margin-bottom: 0.5em;
+  justify-content: start;
+  margin-bottom: 10px;
+  padding-top: 5px;
+
+  .ratings {
+    margin-left: 0.2em;
+    padding-top: 0.3em;
+    font-size: 0.8em;
+  }
+
+  .stars {
+    display: flex;
+    align-items: center;
+    p {
+      font-size: 10px;
+      font-weight: 100;
+      color: #0381fe;
+      vertical-align: middle;
+    }
+    div {
+      display: inline;
+      width: 16px !important;
+      height: 16px !important;
+      margin-right: 2px !important;
+    }
+
+    .filled-star {
+      background-image: url(https://www.samsung.com/etc.clientlibs/samsung/clientlibs/consumer/global/clientlib-common/resources/images/icon-rating-star-filled.svg);
+      display: inline-block;
+      background-size: cover;
+      width: 16px;
+      height: 16px;
+      margin-right: 4px;
+    }
+
+    .empty-star {
+      background-image: url(https://www.samsung.com/etc.clientlibs/samsung/clientlibs/consumer/global/clientlib-common/resources/images/icon-rating-star-empty-grayscale-bb.svg);
+      display: inline-block;
+      background-size: cover;
+      width: 16px;
+      height: 16px;
+      margin-right: 4px;
+    }
+  }
+}
