@@ -125,6 +125,7 @@ export default class Tv {
           const seeMoreLink = boxFinder.querySelector(".product-card-v2__cta").firstChild;
           const image = boxFinder.querySelector('.image__main');
           const nameText = boxFinder.querySelector('.product-card-v2__name-text');
+          console.log(features);
           if (sku === currentSku){
             this.notAvaliablePopUp(name, currentSku, rating, features, seeMoreLink, image, nameText)
           }
@@ -386,7 +387,7 @@ checkingSku() {
 }
 
 notAvaliablePopUp(name, currentSku, rating, features, seeMoreLink, image, nameText) {
-  // console.log(name, currentSku, rating, features, seeMoreLink, image, nameText)
+  console.log(name, currentSku, rating, features, seeMoreLink, image, nameText)
   const modal = document.querySelector('.modal');
   const modalContent = document.querySelector('.modal-content');
   const imageSrc = image.getAttribute("src");
@@ -417,9 +418,9 @@ notAvaliablePopUp(name, currentSku, rating, features, seeMoreLink, image, nameTe
     let ul = document.createElement('ul');
     ul.classList.add('dot-list');
     ul.setAttribute('role', 'list');
-
-    features.forEach((feature) => {
-      // let index = i
+    console.log(features)
+      features.forEach((feature, i) => {
+      let index = i
       let li = document.createElement('li');
       li.classList.add('dot-list__item');
       li.setAttribute('role', 'listitem');
@@ -427,9 +428,10 @@ notAvaliablePopUp(name, currentSku, rating, features, seeMoreLink, image, nameTe
         `<svg class="icon" focusable="false" viewBox="0 0 96 96">
           <path d="M48 32c8.837 0 16 7.163 16 16s-7.163 16-16 16-16-7.163-16-16 7.163-16 16-16z"></path>
         </svg>
-        <span class="usp-text">${feature.textContent}</span>`;
-        ul.appendChild(li)
+        <span class="usp-text">${feature.innerText.trim()}</span>`;
+      ul.appendChild(li);
     })
+
     return ul.innerHTML;
   }
 

@@ -133,8 +133,8 @@ export default class ChangeBtn {
           const seeMoreLink = boxFinder.querySelector(".product-card-v2__cta").firstChild;
           const image = boxFinder.querySelector('.image__main');
           const nameText = boxFinder.querySelector('.product-card-v2__name-text');
+          console.log(features);
           if (sku === currentSku){
-            // console.log(name, currentSku, rating, features, seeMoreLink, image)
             this.notAvaliablePopUp(name, currentSku, rating, features, seeMoreLink, image, nameText)
           }
         }
