@@ -133,7 +133,7 @@ export default class ChangeBtn {
           const seeMoreLink = boxFinder.querySelector(".product-card-v2__cta").firstChild;
           const image = boxFinder.querySelector('.image__main');
           const nameText = boxFinder.querySelector('.product-card-v2__name-text');
-          console.log(features);
+          // console.log(features);
           if (sku === currentSku){
             this.notAvaliablePopUp(name, currentSku, rating, features, seeMoreLink, image, nameText)
           }
@@ -215,7 +215,7 @@ popUp(name, modelCode, variants, rating, features, price, promoPrice, image, ben
                         withCredentials: true
                     },
                     success: (res) => {
-                      console.log(res)
+                      // console.log(res)
                       window.location.replace('https://shop.samsung.com/uk/cart')
                     }
                 });
@@ -277,14 +277,18 @@ popUp(name, modelCode, variants, rating, features, price, promoPrice, image, ben
   }
   //checks to see there was or is another pop in modal, if there is then it removes it
   checkPopup();
-
+  const nonWarrentySkus = ["WW10T504DAN/S1", "WW10T504DAW/S1", "WW12T504DAW/S1", "WW12T504DAN/S1"];
+  const warrantyBadge = "https://images.samsung.com/is/image/samsung/p6pim/uk/family/346103/award/uk-awards-washer-ww90t684dlh-501500337";
   const container = document.createElement('div');
         container.classList.add('container');
         container.innerHTML =
   `<div class="image__container">
-    <span><img src="https://images.samsung.com/is/image/samsung/p6pim/uk/family/346103/award/uk-awards-washer-ww90t684dlh-501500337" alt="5 year warranty badge"/></span>
+    <span>
+    ${// if the sku is in the nonWarrentySkus array then it will not show the non warrenty image
+    nonWarrentySkus.includes(modelCode) ? '' : `<img src="${warrantyBadge}" alt="5 year warranty badge"/>`}
+    </span>
       <div class="main__product__image">
-        <img src="${hiResImage}" alt="${modelCode}"/>
+        <img src="${hiResImage}" alt="${name}"/>
       </div>
     <div class="icons">
     <div class="delivery">
@@ -376,8 +380,7 @@ move() {
 }
 
 notAvaliablePopUp(name, currentSku, rating, features, seeMoreLink, image, nameText) {
-  // console.log(name, currentSku, rating, features, seeMoreLink, image, nameText)
-  // console.log(seeMoreLink)
+
   const modal = document.querySelector('.modal');
   const modalContent = document.querySelector('.modal-content');
   const imageSrc = image.getAttribute("src");
@@ -397,7 +400,7 @@ notAvaliablePopUp(name, currentSku, rating, features, seeMoreLink, image, nameTe
     ul.classList.add('dot-list');
     ul.setAttribute('role', 'list');
 
-      features.map((feature, i) => {
+      features.forEach((feature, i) => {
       let index = i
       let li = document.createElement('li');
       li.classList.add('dot-list__item');
@@ -406,14 +409,9 @@ notAvaliablePopUp(name, currentSku, rating, features, seeMoreLink, image, nameTe
         `<svg class="icon" focusable="false" viewBox="0 0 96 96">
           <path d="M48 32c8.837 0 16 7.163 16 16s-7.163 16-16 16-16-7.163-16-16 7.163-16 16-16z"></path>
         </svg>
-        <span class="usp-text">${feature.title}</span>`;
-      if (index > 11 && index < 15) {
-        // console.log(feature.title)
-        ul.appendChild(li);
-      } else if (feature.uid.includes('RB29FWRNDBC/EU') && index > 2) {
-        ul.appendChild(li);
-      }
-    }).join('');
+        <span class="usp-text">${feature.innerText.trim()}</span>`;
+      ul.appendChild(li);
+    })
 
     return ul.innerHTML;
   }
@@ -433,13 +431,18 @@ notAvaliablePopUp(name, currentSku, rating, features, seeMoreLink, image, nameTe
 
 //checks to see there was or is another pop in modal, if there is then it removes it
   checkPopup();
-
+    const nonWarrentySkus = ["WW10T504DAN/S1", "WW10T504DAW/S1", "WW12T504DAW/S1", "WW12T504DAN/S1"]
+  const warrantyBadge = "https://images.samsung.com/is/image/samsung/p6pim/uk/family/346103/award/uk-awards-washer-ww90t684dlh-501500337";
     const container = document.createElement('div');
         container.classList.add('container');
         container.innerHTML =
-    `<div class="image__container">
+    `<div class="image__container unavaliable">
+     <span>
+    ${// if the sku is in the nonWarrentySkus array then it will not show the non warrenty image
+    nonWarrentySkus.includes(modelCode) ? '' : `<img src="${warrantyBadge}" alt="5 year warranty badge"/>`}
+    </span>
           <div class="main__product__image">
-            <img src="${hiResImage}" alt="${currentSku}"/>
+            <img src="${hiResImage}" alt="${nameText.textContent}"/>
           </div>
         <div class="icons">
         <div class="delivery">

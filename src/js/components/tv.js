@@ -125,7 +125,7 @@ export default class Tv {
           const seeMoreLink = boxFinder.querySelector(".product-card-v2__cta").firstChild;
           const image = boxFinder.querySelector('.image__main');
           const nameText = boxFinder.querySelector('.product-card-v2__name-text');
-          console.log(features);
+          // console.log(features);
           if (sku === currentSku){
             this.notAvaliablePopUp(name, currentSku, rating, features, seeMoreLink, image, nameText)
           }
@@ -210,7 +210,7 @@ popUp(name, modelCode, variants, rating, features, price, promoPrice, image, ben
                         withCredentials: true
                     },
                     success: (res) => {
-                      console.log(res)
+                      // console.log(res)
                       window.location.replace('https://shop.samsung.com/uk/cart')
                     }
                 });
@@ -273,14 +273,19 @@ popUp(name, modelCode, variants, rating, features, price, promoPrice, image, ben
   }
   //checks to see there was or is another pop in modal, if there is then it removes it
   checkPopup();
-
+  const nonWarrentySkus = ["WW10T504DAN/S1", "WW10T504DAW/S1", "WW12T504DAW/S1", "WW12T504DAN/S1"]
+  const warrantyBadge = "https://images.samsung.com/is/image/samsung/p6pim/uk/family/346103/award/uk-awards-washer-ww90t684dlh-501500337";
   const container = document.createElement('div');
+
         container.classList.add('container');
         container.innerHTML =
   `<div class="image__container">
-    <span><img src="https://images.samsung.com/is/image/samsung/p6pim/uk/family/346103/award/uk-awards-washer-ww90t684dlh-501500337" alt="5 year warranty badge"/></span>
+    <span>
+    ${// if the sku is in the nonWarrentySkus array then it will not show the non warrenty image
+    nonWarrentySkus.includes(modelCode) ? '' : `<img src="${warrantyBadge}" alt="5 year warranty badge"/>`}
+    </span>
       <div class="main__product__image">
-        <img src="${hiResImage}" alt="${modelCode}"/>
+        <img src="${hiResImage}" alt="${name}"/>
       </div>
     <div class="icons">
     <div class="delivery">
@@ -378,7 +383,7 @@ checkingSku() {
   panelBoxs.forEach((panelBox) => {
       const elementToOb = panelBox;
       const observer = new MutationObserver(function() {
-							console.log('chaning sku not main')
+							// console.log('chaning sku not main')
         const change = new ChangeBtn();
               change.changeSku();
       })
@@ -387,7 +392,7 @@ checkingSku() {
 }
 
 notAvaliablePopUp(name, currentSku, rating, features, seeMoreLink, image, nameText) {
-  console.log(name, currentSku, rating, features, seeMoreLink, image, nameText)
+
   const modal = document.querySelector('.modal');
   const modalContent = document.querySelector('.modal-content');
   const imageSrc = image.getAttribute("src");
@@ -418,7 +423,7 @@ notAvaliablePopUp(name, currentSku, rating, features, seeMoreLink, image, nameTe
     let ul = document.createElement('ul');
     ul.classList.add('dot-list');
     ul.setAttribute('role', 'list');
-    console.log(features)
+
       features.forEach((feature, i) => {
       let index = i
       let li = document.createElement('li');

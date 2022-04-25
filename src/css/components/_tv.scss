@@ -130,7 +130,11 @@ $max_font: 12px;
         img {
           width:50%;
         }
+      }.unavaliable {
+        top: -35px;
       }
+    }.unavaliable {
+      top: 10px;
     }
     .product__info__content {
       width: 50%;
