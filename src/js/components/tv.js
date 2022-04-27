@@ -248,8 +248,7 @@ popUp(name, modelCode, variants, rating, features, price, promoPrice, image, ben
           <path d="M48 32c8.837 0 16 7.163 16 16s-7.163 16-16 16-16-7.163-16-16 7.163-16 16-16z"></path>
         </svg>
         <span class="usp-text">${feature.title}</span>`;
-      if (index > 1 && index < 6) {
-
+      if (index > 0 && index < 6) {
         ul.appendChild(li);
       } else if (feature.uid.includes('RB29FWRNDBC/EU') && index > 2) {
         ul.appendChild(li);

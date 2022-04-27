@@ -148,6 +148,7 @@ export default class BulletPoints {
     if (currentPopUpSku === sku ) {
 
      bulletPoints.forEach((bulletPoint, x) => {
+      // console.log(bulletPoint);
       currentSpecs.forEach((specs, y) => {
        (x === y) ? bulletPoint.innerText = specs : bulletPoint.innerText;
       });
